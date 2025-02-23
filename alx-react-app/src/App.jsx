@@ -18,7 +18,17 @@ function App() {
         </a>
       </div>
 
-      {/*  WelcomeMessage component added correctly */}
+      {/*  function WelcomeMessage() {
+    return (
+        <div>
+            <h1>Hello everyone, I am learning React at ALX!</h1>
+            <p>I am learning about JSX!</p>
+        </div>
+    );
+}
+
+export default WelcomeMessage;
+ */}
       <WelcomeMessage />
 
       <h1>Vite + React</h1>
