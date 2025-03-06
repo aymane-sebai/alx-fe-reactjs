@@ -12,4 +12,13 @@ const App = () => {
         <h1>Recipe Sharing App</h1>
         <SearchBar />  {/* Search functionality */}
         <Routes>
-          <Rou
+          <Route path="/" element={<RecipeList />} /> {/* Home route */}
+          <Route path="/add" element={<AddRecipeForm />} /> {/* Form for adding recipes */}
+          <Route path="/recipe/:id" element={<RecipeDetails />} /> {/* Recipe details page */}
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
