@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import useRecipeStore from '../store/recipeStore';
 
 const RecipeList = () => {
@@ -10,15 +11,4 @@ const RecipeList = () => {
       {filteredRecipes.length > 0 ? (
         filteredRecipes.map((recipe) => (
           <div key={recipe.id} className="recipe-card">
-            <h3>{recipe.title}</h3>
-            <p>{recipe.description}</p>
-          </div>
-        ))
-      ) : (
-        <p>No matching recipes found.</p>
-      )}
-    </div>
-  );
-};
-
-export default RecipeList;
+            <h3>{recip
