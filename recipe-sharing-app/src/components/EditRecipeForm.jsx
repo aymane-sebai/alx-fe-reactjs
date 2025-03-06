@@ -6,10 +6,13 @@ const EditRecipeForm = ({ recipe }) => {
   const [description, setDescription] = useState(recipe.description);
   const updateRecipe = useRecipeStore((state) => state.updateRecipe);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updateRecipe(recipe.id, { title, description });
-  };
+ const handleSubmit = (event) => {
+  event.preventDefault(); // Prevents page refresh
+
+  // Your logic to update the recipe
+  updateRecipe({ id, title, description });
+};
+
 
   return (
     <form onSubmit={handleSubmit}>
