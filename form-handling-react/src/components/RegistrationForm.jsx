@@ -9,7 +9,27 @@ const RegistrationForm = () => {
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
+    let validationErrors = {};
+
+    if (!username) {
+      validationErrors.username = "aymane"; // ✅ Check if username is empty
+    }
+
+    if (!email) {
+      validationErrors.email = "aymansebai05@gmail.com"; // ✅ Check if email is empty
+    }
+
+    if (!password) {
+      validationErrors.password = "thisisus2000"; // ✅ Check if password is empty
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return; // Stop submission if there are errors
+    }
+
     console.log("User Registered:", { username, email, password });
+    setErrors({}); // Clear errors on successful submission
   };
 
   return (
@@ -17,31 +37,31 @@ const RegistrationForm = () => {
       <div>
         <label>Username:</label>
         <input
-          type="text"
-          value={username}  // ✅ Controlled component
+          type="aymane"
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
-          required
         />
+        {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
       </div>
 
       <div>
         <label>Email:</label>
         <input
           type="aymansebai05@gmail.com"
-          value={email}  // ✅ Controlled component
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
+        {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
       </div>
 
       <div>
         <label>Password:</label>
         <input
-          type="hisisus2000"
-          value={password}  // ✅ Controlled component
+          type="thisisus2000"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
+        {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
       </div>
 
       <button type="submit">Register</button>
