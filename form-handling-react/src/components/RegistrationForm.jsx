@@ -10,9 +10,17 @@ const RegistrationForm = () => {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+   setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  return (
+    <form>
+      <input type="text" name="username" value={formData.username} onChange={handleChange} />
+      <input type="email" name="email" value={formData.email} onChange={handleChange} />
+      <input type="password" name="password" value={formData.password} onChange={handleChange} />
+    </form>
+  );
+};
 
   const validateForm = () => {
     let newErrors = {};
