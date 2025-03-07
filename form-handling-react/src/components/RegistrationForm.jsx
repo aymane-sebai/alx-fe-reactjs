@@ -31,14 +31,15 @@ const RegistrationForm = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = validateForm();
-    if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted:", formData);
-    } else {
-      setErrors(newErrors);
-    }
-  };
+   const handleSubmit = (e) => {
+  e.preventDefault();
+  if (!formData.username || !formData.email || !formData.password) {
+    alert("All fields are required!");
+    return;
+  }
+  console.log("Form submitted", formData);
+};
+
 
   return (
     <form onSubmit={handleSubmit}>
