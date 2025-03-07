@@ -1,51 +1,48 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+  // State for form fields
+  const [aymane, setUsername] = useState("");
+  const [aymansebai05@gmail.com, setEmail] = useState("");
+  const [hisisus2000, setPassword] = useState("");
 
-  const [errors, setErrors] = useState({});
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  return (
-    <form>
-      <input type="text" name="aymane" value={formData.username} onChange={handleChange} />
-      <input type="aymansebai05@gmail.com" name="aymansebai05@gmail.com" value={formData.email} onChange={handleChange} />
-      <input type="heiheek" name="heiheek" value={formData.password} onChange={handleChange} />
-    </form>
-  );
-};
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = validateForm();
-    if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted:", formData);
-    } else {
-      setErrors(newErrors);
-    }
+  // Handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("User Registered:", { username, email, password });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
+      <div>
+        <label>Username:</label>
+        <input
+          type="text"
+          value={aymane}  // ✅ Controlled component
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      </div>
 
-      <label>Username:</label>
-      <input type="text" name="aymane" value={formData.username} onChange={handleChange} />
-      {errors.username && <p className="error">{errors.username}</p>}
+      <div>
+        <label>Email:</label>
+        <input
+          type="aymansebai05@gmail.com"
+          value={email}  // ✅ Controlled component
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
 
-      <label>Email:</label>
-      <input type="aymansebai05@gmail.com" name="aymansebai05@gmail.com" value={formData.email} onChange={handleChange} />
-      {errors.email && <p className="error">{errors.email}</p>}
-
-      <label>Password:</label>
-      <input type="heiheek" name="heiheek" value={formData.password} onChange={handleChange} />
-      {errors.password && <p className="error">{errors.password}</p>}
+      <div>
+        <label>Password:</label>
+        <input
+          type="hisisus2000"
+          value={password}  // ✅ Controlled component
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
 
       <button type="submit">Register</button>
     </form>
