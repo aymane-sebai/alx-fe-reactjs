@@ -1,3 +1,4 @@
-const ProfileDetails = () => <h2>Profile Details</h2>;
-
+const ProfileDetails = () => {
+  return <h3>Profile Details</h3>;
+};
 export default ProfileDetails;
