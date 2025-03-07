@@ -18,7 +18,7 @@ const RegistrationForm = () => {
         <label>Username:</label>
         <input
           type="text"
-          value={aymane}  // ✅ Controlled component
+          value={username}  // ✅ Controlled component
           onChange={(e) => setUsername(e.target.value)}
           required
         />
