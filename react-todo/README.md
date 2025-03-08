@@ -10,5 +10,5 @@ This project demonstrates form handling in React using:
 
 ### 1️⃣ Clone the Repository
 ```sh
-git clone https://github.com/YOUR_GITHUB_USERNAME/alx-fe-reactjs.git
+git clone https://github.com/aymane-sebai/alx-fe-reactjs.git
 cd alx-fe-reactjs/form-handling-react
