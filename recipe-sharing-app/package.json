@@ -1,4 +1,8 @@
 "dependencies": {
+  "zustand": "^4.3.6"  // (or the latest version available)
+
+
+"dependencies": {
   "react": "^18.0.0",
   "react-dom": "^18.0.0"
 },
