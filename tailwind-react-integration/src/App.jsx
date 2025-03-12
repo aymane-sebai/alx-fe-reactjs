@@ -1,7 +1,12 @@
-export default function App() {
+import React from "react";
+import UserProfile from "./components/UserProfile";
+
+function App() {
   return (
-    <div className="bg-blue-500 text-white text-center p-6 text-xl">
-      Tailwind CSS is working! 🎉
+    <div className="flex items-center justify-center min-h-screen bg-gray-200">
+      <UserProfile />
     </div>
   );
 }
+
+export default App;
