@@ -4,35 +4,46 @@ const AddRecipeForm = ({ onAddRecipe }) => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    let newErrors = {};
+
+    if (!title.trim()) {
+      newErrors.title = "Recipe title is required.";
+    }
+    if (!ingredients.trim()) {
+      newErrors.ingredients = "Ingredients cannot be empty.";
+    }
+    if (!steps.trim()) {
+      newErrors.steps = "Preparation steps are required.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!title.trim() || !ingredients.trim() || !steps.trim()) {
-      setError("All fields are required!");
-      return;
-    }
+    if (!validate()) return;
 
     const newRecipe = {
-      id: Date.now(), // Temporary unique ID
+      id: Date.now(),
       title,
-      ingredients: ingredients.split(",").map((item) => item.trim()), // Convert to array
+      ingredients: ingredients.split(",").map((item) => item.trim()),
       steps,
     };
 
-    onAddRecipe(newRecipe); // Pass data to parent component
+    onAddRecipe(newRecipe);
     setTitle("");
     setIngredients("");
     setSteps("");
-    setError("");
+    setErrors({});
   };
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Add a New Recipe</h2>
-      
-      {error && <p className="text-red-500">{error}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -43,6 +54,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
         </div>
 
         <div>
@@ -52,6 +64,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
           ></textarea>
+          {errors.ingredients && <p className="text-red-500 text-sm">{errors.ingredients}</p>}
         </div>
 
         <div>
@@ -61,6 +74,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
             value={steps}
             onChange={(e) => setSteps(e.target.value)}
           ></textarea>
+          {errors.steps && <p className="text-red-500 text-sm">{errors.steps}</p>}
         </div>
 
         <button
