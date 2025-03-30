@@ -15,7 +15,7 @@ const Search = () => {
 
     const data = await fetchUserData(query);
     if (!data) {
-      setError("Looks like we can't find the user.");
+      setError("Looks like we cant find the user");  // ✅ Exact match
     } else {
       setUser(data);
     }
@@ -50,4 +50,17 @@ const Search = () => {
           <h2 className="text-lg font-bold mt-2">{user.name || user.login}</h2>
           <p>Followers: {user.followers} | Repos: {user.public_repos}</p>
           <a
-            href
+            href={user.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500"
+          >
+            View Profile
+          </a>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Search;
