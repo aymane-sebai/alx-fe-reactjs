@@ -17,7 +17,7 @@ const Search = () => {
 
     const data = await fetchAdvancedUsers(query, location, minRepos);
     if (!data || data.length === 0) {
-      setError("No users found. Try different search criteria.");
+      setError("Looks like we cant find the user");
     } else {
       setUsers(data);
     }
